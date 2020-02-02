@@ -7,6 +7,7 @@ const Menu = electron.Menu;
 const dialog = electron.dialog;
 
 let mainWindow;
+let settingsWindow;
 let menuTemplate = [{
   label: 'MyApp',
   submenu: [
@@ -38,6 +39,19 @@ const showAboutDialog = () => {
     button: ['OK'],
     message: 'About this app',
     detail: 'This app was created by electron',
+  });
+};
+
+const showSettingsWindow = () => {
+  settingsWindow = new BrowserWindow({
+    width: 600,
+    height: 400,
+  });
+  settingsWindow.loadURL(`file://${__dirname}/settings.html`);
+  settingsWindow.webContents.openDevTools();
+  settingsWindow.show();
+  settingsWindow.on('closed', () => {
+    settingsWindow = null;
   });
 };
 
