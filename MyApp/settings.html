@@ -51,9 +51,13 @@
   </ul>
   <script>
     'use strict';
+
+    const ipcRenderer = require('electron').ipcRenderer;
+
     Array.from(document.getElementsByName("colors")).forEach(radio => {
       radio.addEventListener("change", (e) => {
-        console.log(e.target.value);
+        const color = e.target.value;
+        ipcRenderer.send('settings_changed', color);
       });
     });
   </script>

@@ -5,6 +5,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 const dialog = electron.dialog;
+const ipcMain = electron.ipcMain;
 
 let mainWindow;
 let settingsWindow;
@@ -70,4 +71,8 @@ app.on('activate', () => {
   if (!mainWindow) {
     createMainWindow();
   }
+});
+
+ipcMain.on("settings_changed", (event, color) => {
+  // some process
 });

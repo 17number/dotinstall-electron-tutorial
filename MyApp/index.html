@@ -23,6 +23,9 @@
   <p id="quote">Just do it!</p>
   <script>
     'use strict';
+
+    const ipcRenderer = require('electron').ipcRenderer;
+
     const quote = document.getElementById('quote');
     const quotes = [
       'Just do it',
