@@ -6,8 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
 
-app.on('ready', () => {
-  // create window
+const createMainWindow = () => {
   mainWindow = new BrowserWindow({
     width: 600,
     height: 400,
@@ -17,4 +16,21 @@ app.on('ready', () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+};
+
+app.on('ready', () => {
+  // create window
+  createMainWindow();
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (!mainWindow) {
+    createMainWindow();
+  }
 });
