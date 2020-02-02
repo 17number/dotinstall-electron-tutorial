@@ -9,11 +9,11 @@ let mainWindow;
 let menuTemplate = [{
   label: 'MyApp',
   submenu: [
-    { label: 'About' },
+    { label: 'About', accelerator: 'CmdOrCtrl+Shift+A', click: () => showAboutDialog() },
     { type: 'separator' },
-    { label: 'Settings' },
+    { label: 'Settings', accelerator: 'CmdOrCtrl+,', click: () => showSettingsWindow() },
     { type: 'separator' },
-    { label: 'Quit' },
+    { label: 'Quit', accelerator: 'CmdOrCtrl+Q', click: () => app.quit() },
   ]
 }];
 let menu = Menu.buildFromTemplate(menuTemplate);
