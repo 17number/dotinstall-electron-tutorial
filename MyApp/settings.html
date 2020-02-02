@@ -51,6 +51,11 @@
   </ul>
   <script>
     'use strict';
+    Array.from(document.getElementsByName("colors")).forEach(radio => {
+      radio.addEventListener("change", (e) => {
+        console.log(e.target.value);
+      });
+    });
   </script>
 </body>
 </html>
