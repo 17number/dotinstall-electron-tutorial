@@ -4,6 +4,7 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
+const dialog = electron.dialog;
 
 let mainWindow;
 let menuTemplate = [{
@@ -28,6 +29,15 @@ const createMainWindow = () => {
   mainWindow.webContents.openDevTools();
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+};
+
+const showAboutDialog = () => {
+  dialog.showMessageBox({
+    type: 'question',
+    button: ['OK'],
+    message: 'About this app',
+    detail: 'This app was created by electron',
   });
 };
 
